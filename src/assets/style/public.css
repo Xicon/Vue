@@ -1,0 +1,21 @@
+.banner {
+    width: 100vw;
+    height: 49px;
+    text-align: center;
+}
+
+[type='text'],
+[type='search'] {
+    border: 1px solid #2775b6;
+    border-radius: 7px;
+}
+
+[type='text']:focus,
+[type='search']:focus {
+    outline: none;
+    border: 2px solid #346c9c;
+}
+
+li{
+    list-style-type: none;
+}

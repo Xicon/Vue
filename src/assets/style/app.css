@@ -1,0 +1,7 @@
+header > nav {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 49px;
+    text-decoration: none;
+}
