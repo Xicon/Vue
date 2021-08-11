@@ -3,9 +3,11 @@
 </template>
 
 <script>
-
-
 export default {
-  name: 'Home'
+  name: "slotLocation"
 }
 </script>
+
+<style scoped>
+
+</style>

@@ -1,7 +1,9 @@
 <template>
-  <p>热门城市查询</p>
-  <div class="geolocation-hotCity">
+  <div class="geolocation-hot-city">
 
+    <div class="hotCity-cite">
+      <cite>热门城市查询</cite>
+    </div>
     <div class="hotCity-range">
       <slot-range/>
     </div>
@@ -17,7 +19,6 @@
     <button @click="getHotCity()">getHotCity</button>
   </div>
   <div class="hotCity-show">
-    <div class="hotCity-show-cite">热门城市查询</div>
     <ol v-for="topCityList in $store.state.a.hotCity.data">
       <li>地区/城市名称:{{ topCityList.name }}</li>
       <li>地区/城市ID:{{ topCityList.id }}</li>
@@ -29,7 +30,7 @@
       <li>地区/城市所在时区:{{ topCityList.tz }}</li>
       <li>地区/城市目前与UTC时间偏移的小时数，{{ topCityList.utcOffset }}</li>
       <li>地区/城市的属性:{{ topCityList.type }}</li>
-      <li>地区评分:{{ topCityList.rank}}</li>
+      <li>地区评分:{{ topCityList.rank }}</li>
     </ol>
   </div>
 </template>
@@ -55,6 +56,18 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+.geolocation-hot-city {
+
+  background-color: #42b983;
+
+  .hotCity-cite {
+    cite {
+      font-style: normal;
+      font-size: large;
+    }
+  }
+}
+
 
 </style>

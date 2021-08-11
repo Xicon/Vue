@@ -3,7 +3,7 @@
     <section class="type">
       <label></label>
       <input list="type" type="search" name="type" placeholder="POI类型，可选择搜索某一类型的POI"
-             @change="type($event)"
+             @change="typeChangVal($event)"
       />
       <datalist id="type">
         <option value="scenic">景点</option>
@@ -19,11 +19,11 @@ import {SLOT_TYPE} from "@/store/type.mjs";
 
 export default {
   name: "slotType",
-  methods:{
-    type(e){
+  methods: {
+    typeChangVal(e) {
       return this.$store.commit({
-        type:SLOT_TYPE,
-        value:e.target.value
+        type: SLOT_TYPE,
+        value: e.target.value
       })
     }
   }

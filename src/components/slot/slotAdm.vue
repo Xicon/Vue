@@ -3,7 +3,7 @@
     <section class="slot-adm">
       <label for="cityInfo-adm">行政区域规划</label>
       <input type="search" name="geolocation-cityInfo-adm" id="cityInfo-adm"
-             @change="adm($event)"
+             @change="slotAdm($event)"
       />
     </section>
   </slot>
@@ -15,7 +15,7 @@ import {SLOT_ADM} from "@/store/type.mjs";
 export default {
   name: "Adm",
   methods: {
-    adm(e) {
+    slotAdm(e) {
       return this.$store.commit({type: SLOT_ADM, value: e.target.value})
     },
   }

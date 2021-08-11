@@ -5,7 +5,6 @@
     <POIInfo></POIInfo>
     <POIScope></POIScope>
   </div>
-
 </template>
 
 <script>
@@ -27,6 +26,19 @@ export default {
 
 <style lang="scss">
 .geolocation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.geolocation-city-info,
+.geolocation-hot-city,
+.geolocation-poi-info,
+.geolocation-poi-scope
+{
+  width: 100vw;
+  height: 20vh;
   display: flex;
   justify-content: center;
   align-items: center;

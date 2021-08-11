@@ -10,17 +10,23 @@ import e from '@/store/modules/historicalData.mjs'
 
 const state = {
     publicState: {
-        location: '',
+        location: '广西',
+        locationID: '',
+        lat: '116.41', //经度
+        lon: '39.92', //纬度
+        COORDINATE: '116.41,39.92', // 经纬度
         key: '7bae28cc0bd946f39c1875c3f8874ae4',
         adm: '',
         range: 'world',
         number: 1,
         lang: 'zh',
-        type: '', //poiInfo/poiRange
+        type: 'scenic', //poiInfo/poiRange
         city: '', //poiInfo/poiRange
+        radius: 5, //poiInfo/poiRange
     },
     home: {
         location: '', //搜索的地区名称
+        locationID: '', //搜索的地区id
         cityName: String, //城市名称
         timeupdate: '', //更新时间
         temperature: String,//温度

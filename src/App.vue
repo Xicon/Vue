@@ -8,13 +8,8 @@
       <router-link to="/disasterWarn">灾害预警API</router-link>
       <router-link to="/historicalData">历史数据API</router-link>
     </nav>
-    <router-view/>
-
-    <div class="weather-cityName">
-      <h3></h3>
-    </div>
   </header>
-
+  <router-view/>
 </template>
 
 <script>
@@ -28,7 +23,7 @@ export default {
     // getIndexInfo() {
     //   return this.$store.dispatch(HOME_INFO)
     // }
-  }
+  },
 }
 </script>
 

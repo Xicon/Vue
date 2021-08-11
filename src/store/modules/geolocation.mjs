@@ -7,16 +7,34 @@ const geolocation = {
                 adm: '',
                 range: 'world',
                 number: '10',
-                lang: 'zh'
+                lang: 'zh',
             },
-            data: {}
+            data: {
+                locationID:''
+            }
         },
         hotCity: {
-            url: 'city/top?',
+            url: 'city/top',
             data: {}
         },
-        poiInfo: {},
-        poiScope: {}
+        poiInfo: {
+            url:'poi/lookup',
+            params:{
+
+            },
+            data:{
+
+            }
+        },
+        poiScope: {
+            url:'poi/range',
+            params:{
+
+            },
+            data:{
+
+            }
+        }
 
     },
     getters: {},

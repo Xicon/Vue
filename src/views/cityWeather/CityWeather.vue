@@ -5,9 +5,9 @@
 </template>
 
 <script>
-const WeatherNow = require("@/views/cityWeather/WeatherNow")
-    , WeatherDay = require("@/views/cityWeather/WeatherDay")
-    , WeatherHour = require("@/views/cityWeather/WeatherHour")
+import WeatherNow from "@/views/cityWeather/WeatherNow"
+import WeatherDay from "@/views/cityWeather/WeatherDay"
+import WeatherHour from "@/views/cityWeather/WeatherHour"
 
 export default {
   name: "CityWeather",

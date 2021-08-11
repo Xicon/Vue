@@ -1,13 +1,14 @@
 <template>
-  <p>城市信息查询</p>
   <div class="geolocation-city-info">
+    <div class="city-cite">
+      <cite>城市信息查询</cite>
+    </div>
 
     <div class="cityInfo-location">
       <label for="cityInfo-location">输入想搜索的城市/地区</label>
       <input type="search" name="geolocation-cityInfo-location" id="cityInfo-location" checked="checked"
              @change="cityLocation($event)"
       />
-
     </div>
 
     <div class="cityInfo-adm">
@@ -57,7 +58,10 @@ export default {
   name: "CityInfo",
   methods: {
     cityLocation(e) {
-      return this.$store.commit({type: LOCATION_CITY_LOCATION, value: e.target.value})
+      return this.$store.commit({
+        type: LOCATION_CITY_LOCATION,
+        value: e.target.value
+      })
     },
 
     getCityInfo() {
@@ -78,9 +82,13 @@ export default {
 
 <style lang="scss">
 .geolocation-city-info {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  background-color: #428675;
+
+  .city-cite {
+    cite {
+      font-style: normal;
+      font-size: large;
+    }
+  }
 }
 </style>

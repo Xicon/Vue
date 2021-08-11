@@ -1,5 +1,11 @@
 <template>
-<p>实时天气</p>
+<div class="weather-now">
+
+  <div class="weather-location">
+    <slot-location/>
+  </div>
+
+</div>
 </template>
 
 <script>

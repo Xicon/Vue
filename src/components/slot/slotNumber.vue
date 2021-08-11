@@ -3,10 +3,9 @@
     <section class="slot-number">
       <label for="slot-number">输入搜索的数量</label>
       <input type="tel" name="slot-number" id="slot-number"
-             @change="number($event)"
+             @change="slotNumber($event)"
       />
     </section>
-
   </slot>
 </template>
 
@@ -16,7 +15,7 @@ import {SLOT_NUMBER} from "@/store/type.mjs";
 export default {
   name: "Number",
   methods: {
-    number(e) {
+    slotNumber(e) {
       return this.$store.commit({
         type: SLOT_NUMBER,
         value: e.target.value

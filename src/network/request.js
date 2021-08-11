@@ -9,7 +9,7 @@ export function request(config) {
 
     //请求拦截
     instance.interceptors.request.use(config => {
-        // console.log(config)
+        console.log(config)
         return config
     }, error => {
         console.error(error.toJSON())
@@ -18,7 +18,7 @@ export function request(config) {
 
     //响应拦截
     instance.interceptors.response.use(response => {
-        // console.log(response);
+        console.log(response);
         return response.data
     }, error => {
         return Promise.reject(error)

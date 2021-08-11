@@ -3,7 +3,7 @@
     <section class="slot-lang">
       <label for="lang">语言选择，输入<a href="https://www.iso.org/obp/ui/#search">ISO 3166</a>代码查询</label>
       <input list="lang" type="search" name="lang"
-             @change="lang($event)"
+             @change="langChangVal($event)"
       />
 
       <datalist id="lang">
@@ -24,7 +24,7 @@ import {SLOT_LANG} from "@/store/type.mjs";
 export default {
   name: "Lang",
   methods: {
-    lang(e) {
+    langChangVal(e) {
       return this.$store.commit({
         type: SLOT_LANG,
         value: e.target.value

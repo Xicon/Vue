@@ -4,8 +4,9 @@
 </template>
 
 <script>
-const HistoricalAir = require('@/views/historicalData/HistoricalAir')
-const HistoricalWeather = require('@/views/historicalData/HistoricalWeather')
+import HistoricalAir from '@/views/historicalData/HistoricalAir'
+import HistoricalWeather from '@/views/historicalData/HistoricalWeather'
+
 export default {
   name: "HistoricalData",
   components: {

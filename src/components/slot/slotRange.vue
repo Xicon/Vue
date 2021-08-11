@@ -3,7 +3,7 @@
     <section class="slot-range">
       <label for="range">搜索范围，输入<a href="https://www.iso.org/obp/ui/#search">ISO 3166</a>国家代码查询</label>
       <input list="range" type="search" name="range"
-             @change="range($event)"
+             @change="rangeChangVal($event)"
       />
 
       <datalist id="range">
@@ -24,7 +24,7 @@ import {SLOT_RANGE} from "@/store/type.mjs";
 export default {
   name: "Range",
   methods: {
-    range(e) {
+    rangeChangVal(e) {
       return this.$store.commit({
         type: SLOT_RANGE,
         value: e.target.value

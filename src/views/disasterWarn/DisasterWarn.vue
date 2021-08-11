@@ -4,8 +4,8 @@
 </template>
 
 <script>
-const WeatherDisasterWarn = require('@/views/disasterWarn/WeatherDisasterWarn')
-const WeatherWarnCityList = require('@/views/disasterWarn/WeatherWarnCityList')
+import WeatherDisasterWarn from '@/views/disasterWarn/WeatherDisasterWarn'
+import WeatherWarnCityList from '@/views/disasterWarn/WeatherWarnCityList'
 
 export default {
   name: "DisasterWarn",

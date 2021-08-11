@@ -3,7 +3,7 @@
 </template>
 
 <script>
-const WeatherLifeIndex = require("@/views/weatherIndex/WeatherLifeIndex")
+import WeatherLifeIndex from "@/views/weatherIndex/WeatherLifeIndex"
 
 export default {
   name: "WeatherIndex",
