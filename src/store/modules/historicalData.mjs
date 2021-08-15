@@ -1,7 +1,14 @@
 const historicalData = {
-    state: {},
+    state: {
+        baseURL: 'https://datasetapi.qweather.com/v7',
+        weather: {
+            url: 'historical/air',
+            params: {},
+            data: {},
+        },
+    },
     getters: {},
     mutations: {},
-    actions: {}
+    actions: {},
 }
 export default historicalData

@@ -1,47 +1,31 @@
 <template>
-  <div class="geolocation">
-    <CityInfo></CityInfo>
-    <HotCity></HotCity>
-    <POIInfo></POIInfo>
-    <POIScope></POIScope>
+  <div class="geolocation-link">
+    <router-link to="/geolocation/info">城市信息查询</router-link>
+    |
+    <router-link to="/geolocation/city">热门城市查询</router-link>
+    |
+    <router-link to="/geolocation/poiInfo">POI信息搜索</router-link>
+    |
+    <router-link to="/geolocation/poiScope">POI范围搜索</router-link>
   </div>
+  <router-view/>
 </template>
 
 <script>
-import CityInfo from "@/views/geolocation/CityInfo"
-import HotCity from "@/views/geolocation/HotCity"
-import POIInfo from "@/views/geolocation/POIInfo"
-import POIScope from "@/views/geolocation/POIScope"
+
 
 export default {
   name: "Geolocation",
-  components: {
-    CityInfo,
-    HotCity,
-    POIInfo,
-    POIScope
-  }
 }
 </script>
 
 <style lang="scss">
-.geolocation {
+.geolocation-link {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
-  flex-direction: column;
+  background-color: #add5a2;
 }
 
-.geolocation-city-info,
-.geolocation-hot-city,
-.geolocation-poi-info,
-.geolocation-poi-scope
-{
-  width: 100vw;
-  height: 20vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
+
 </style>

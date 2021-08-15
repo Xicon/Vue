@@ -1,15 +1,14 @@
 <template>
-  <WeatherLifeIndex></WeatherLifeIndex>
+  <div class="WeatherIndex">
+    <router-link to="/weatherIndex/life">天气生活指数</router-link>
+  </div>
+  <router-view/>
 </template>
 
 <script>
-import WeatherLifeIndex from "@/views/weatherIndex/WeatherLifeIndex"
 
 export default {
   name: "WeatherIndex",
-  components: {
-    WeatherLifeIndex
-  }
 }
 </script>
 

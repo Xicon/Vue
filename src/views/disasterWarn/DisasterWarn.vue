@@ -1,18 +1,16 @@
 <template>
-  <Weather-disaster-warn></Weather-disaster-warn>
-  <Weather-warn-city-list></Weather-warn-city-list>
+  <div class="disasterWarn-link">
+    <router-link to="/disasterWarn/weather">天气灾害预警</router-link>
+    <router-link to="/disasterWarn/cityList">天气预警城市列表</router-link>
+  </div>
+  <router-view/>
+
 </template>
 
 <script>
-import WeatherDisasterWarn from '@/views/disasterWarn/WeatherDisasterWarn'
-import WeatherWarnCityList from '@/views/disasterWarn/WeatherWarnCityList'
 
 export default {
   name: "DisasterWarn",
-  components: {
-    WeatherDisasterWarn,
-    WeatherWarnCityList
-  }
 }
 </script>
 

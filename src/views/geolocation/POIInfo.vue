@@ -5,10 +5,7 @@
     </div>
 
     <div class="poi-info-location">
-      <label for="poi-info-location">输入城市/地区名称</label>
-      <input type="search" name="poi-info-scope" id="poi-info-location"
-             @change="poiInfoLocation($event)"
-      />
+      <slot-location/>
     </div>
 
     <div class="poi-info-type">
@@ -31,36 +28,53 @@
 
     <button type="submit" @click="getPOIInfo()">getPOIInfo</button>
   </div>
+
+  <div class="geolocation-poi-info-show">
+    <ol>
+      <li v-for="item in poiInfo">{{ item }}</li>
+    </ol>
+  </div>
 </template>
 
 <script>
-import slotNumber from '@/components/slot/slotNumber'
-import slotLang from '@/components/slot/slotLang'
-import slotType from '@/components/slot/slotType'
 import slotCity from '@/components/slot/slotCity'
-import {LOCATION_CITY_LOCATION, LOCATION_POI_INFO} from "@/store/type.mjs"
+import slotLang from '@/components/slot/slotLang'
+import slotLocation from '@/components/slot/slotLocation'
+import slotNumber from '@/components/slot/slotNumber'
+import slotType from '@/components/slot/slotType'
+import { LOCATION_POI_INFO, SLOT_LOCATION } from "@/store/type.mjs"
+import { computed } from "vue"
+import { useStore } from 'vuex'
 
 export default {
   name: "POIInfo",
-  methods: {
-    poiInfoLocation(e) {
-      return this.$store.commit({
-        type: LOCATION_CITY_LOCATION,
-        value: e.target.value
-      })
-    },
-    getPOIInfo() {
-      return this.$store.dispatch({
-        type: LOCATION_POI_INFO
-      })
+  components: { slotNumber, slotLang, slotType, slotCity, slotLocation },
+  setup() {
+    const store = useStore ()
+    const poiInfoLocation = e => {
+      store.commit (
+          {
+            type: SLOT_LOCATION,
+            value: e.target.value,
+          },
+      )
+    }
+
+    const getPOIInfo = () => {
+      store.dispatch (
+          {
+            type: LOCATION_POI_INFO,
+          },
+      )
+    }
+
+    return {
+      poiInfoLocation,
+      getPOIInfo,
+      poiInfo: computed (() => store.state.a.poiInfo.data),
     }
   },
-  components: {
-    slotNumber,
-    slotLang,
-    slotType,
-    slotCity
-  }
+
 }
 </script>
 

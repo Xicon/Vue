@@ -5,10 +5,7 @@
     </div>
 
     <div class="poi-scope-location">
-      <label for="scope-location">输入城市/地区</label>
-      <input type="search" name="poi-scope" id="scope-location"
-             @change="poiScopeLocation($event)"
-      />
+      <slot-location/>
     </div>
 
     <div class="poi-scope-type">
@@ -32,32 +29,34 @@
 </template>
 
 <script>
-import {LOCATION_CITY_LOCATION, LOCATION_POI_SCOPE} from "@/store/type.mjs";
-import slotType from '@/components/slot/slotType';
-import slotRadius from '@/components/slot/slotRadius';
-import slotNumber from '@/components/slot/slotNumber';
-import slotLang from '@/components/slot/slotLang';
+import slotLang from '@/components/slot/slotLang'
+import slotLocation from '@/components/slot/slotLocation'
+import slotNumber from '@/components/slot/slotNumber'
+import slotRadius from '@/components/slot/slotRadius'
+import slotType from '@/components/slot/slotType'
+import { LOCATION_POI_SCOPE, SLOT_LOCATION } from "@/store/type.mjs"
 
 export default {
   name: "POIScope.vue",
   methods: {
-    poiScopeLocation(e) {
-      return this.$store.commit({
-        type: LOCATION_CITY_LOCATION,
-        value: e.target.value
-      })
+    poiScopeLocation( e ) {
+      return this.$store.commit ({
+                                   type: SLOT_LOCATION,
+                                   value: e.target.value,
+                                 })
     },
     poiScope() {
-      return this.$store.dispatch({
-        type: LOCATION_POI_SCOPE
-      })
-    }
+      return this.$store.dispatch ({
+                                     type: LOCATION_POI_SCOPE,
+                                   })
+    },
   },
   components: {
     slotType,
     slotRadius,
     slotNumber,
-    slotLang
+    slotLang,
+    slotLocation,
   }
 }
 </script>

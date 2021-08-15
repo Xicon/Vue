@@ -1,18 +1,16 @@
 <template>
-  <HistoricalAir></HistoricalAir>
-  <HistoricalWeather></HistoricalWeather>
+  <div class="historicalAir-link">
+    <router-link to="/historicalData/weather">历史天气数据</router-link>
+    <router-link to="/historicalData/air">历史空气质量</router-link>
+  </div>
+  <router-view/>
+
 </template>
 
 <script>
-import HistoricalAir from '@/views/historicalData/HistoricalAir'
-import HistoricalWeather from '@/views/historicalData/HistoricalWeather'
 
 export default {
   name: "HistoricalData",
-  components: {
-    HistoricalAir,
-    HistoricalWeather
-  }
 }
 </script>
 

@@ -9,14 +9,14 @@
           name="slot-radius-select"
           id="slot-radius"
           @change="radiusChangVal($event)"
+          @keyup.enter="radiusChangVal($event)"
       />
       <datalist id="slot-radius-select">
-        <option value="" selected>搜索範圍</option>
         <option
             v-for="key in radius"
-            :key="key.id"
             v-text="key.text"
             :value="key.value"
+            :key="key.id"
         />
       </datalist>
     </section>
@@ -24,13 +24,20 @@
 </template>
 
 <script>
-import {SLOT_RADIUS} from "@/store/type.mjs";
+import { SLOT_RADIUS } from "@/store/type.mjs"
+import { useStore } from "vuex"
 
 export default {
   name: "slotRadius",
-  data: () => {
-    return {
-      radius: [{
+  setup() {
+    const store = useStore ()
+    const radius = [
+      {
+        id: 'radius_hint',
+        text: '选择范围',
+        value: 'radius_hint',
+        disabled: 'disabled',
+      }, {
         id: 1,
         text: 1,
         value: 1,
@@ -70,17 +77,20 @@ export default {
         id: 9,
         text: 50,
         value: 50,
-      },]
+      }]
+    const radiusChangVal = e => {
+      store.commit (
+          {
+            type: SLOT_RADIUS,
+            value: e.target.value,
+          },
+      )
+    }
+    return {
+      radius,
+      radiusChangVal,
     }
   },
-  methods: {
-    radiusChangVal(e) {
-      return this.$store.commit({
-        type: SLOT_RADIUS,
-        value: e.target.value
-      })
-    }
-  }
 }
 </script>
 

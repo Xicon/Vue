@@ -10,12 +10,48 @@
     border-radius: 7px;
 }
 
+/*
+ * 取消类型为 type='text' 和 type='search' 的input 框 聚焦后的黑边
+*/
+
 [type='text']:focus,
 [type='search']:focus {
     outline: none;
     border: 2px solid #346c9c;
 }
 
-li{
+/*
+* li取消默认的前置符号
+*/
+li {
     list-style-type: none;
+}
+
+/*
+* a链接取消默认的下划线
+*/
+a {
+    text-decoration: none;
+}
+
+/*
+* router-link 链接样式:
+* all_active 展示现在所在的路由的组件和父路由（如果有）的 样式
+* active 展示现在所在的路由的样式，不包含父路由的 样式
+*/
+
+.all_active {
+    padding: 4px;
+    border: 2px dotted #57c3c2
+}
+
+.active {
+    border: none;
+    border-bottom: 3px solid #57c3c2;
+}
+
+.active:hover {
+    transition: all .2s;
+    transform: scale(1.02);
+    border-bottom: 3px solid #20a162;
 }

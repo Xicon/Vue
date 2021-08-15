@@ -19,7 +19,7 @@
     <button @click="getHotCity()">getHotCity</button>
   </div>
   <div class="hotCity-show">
-    <ol v-for="topCityList in $store.state.a.hotCity.data">
+    <ol v-for="topCityList in hotCity">
       <li>地区/城市名称:{{ topCityList.name }}</li>
       <li>地区/城市ID:{{ topCityList.id }}</li>
       <li>地区/城市纬度:{{ topCityList.lat }}</li>
@@ -36,23 +36,28 @@
 </template>
 
 <script>
-import slotRange from "@/components/slot/slotRange";
-import slotNumber from "@/components/slot/slotNumber";
-import slotLang from "@/components/slot/slotLang";
-import {LOCATION_HOT_CITY} from "@/store/type.mjs";
+import slotLang from "@/components/slot/slotLang"
+import slotNumber from "@/components/slot/slotNumber"
+import slotRange from "@/components/slot/slotRange"
+import { LOCATION_HOT_CITY } from "@/store/type.mjs"
+import { computed } from "vue"
+import { useStore } from 'vuex'
 
 export default {
   name: "HotCity",
-  methods: {
-    getHotCity() {
-      return this.$store.dispatch(LOCATION_HOT_CITY)
+  components: { slotRange, slotNumber, slotLang },
+  setup() {
+    const store = useStore ()
+
+    function getHotCity() {
+      store.dispatch (LOCATION_HOT_CITY)
+    }
+
+    return {
+      getHotCity,
+      hotCity: computed (() => store.state.a.hotCity.data),
     }
   },
-  components: {
-    slotRange,
-    slotNumber,
-    slotLang
-  }
 }
 </script>
 

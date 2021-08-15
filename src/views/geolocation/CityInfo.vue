@@ -5,10 +5,7 @@
     </div>
 
     <div class="cityInfo-location">
-      <label for="cityInfo-location">输入想搜索的城市/地区</label>
-      <input type="search" name="geolocation-cityInfo-location" id="cityInfo-location" checked="checked"
-             @change="cityLocation($event)"
-      />
+      <slot-location/>
     </div>
 
     <div class="cityInfo-adm">
@@ -27,17 +24,18 @@
       <slot-lang/>
     </div>
 
-    <button @click="getCityInfo()">getCityInfo</button>
   </div>
 
+  <button @click="getCityInfo()">getCityInfo</button>
+
   <div class="geolocation-cityInfo-show">
-    <ol v-for="location in $store.state.a.cityInfo.data">
+    <ol v-for="location in cityInfo">
       <li>地区/城市名称：{{ location.name }}</li>
       <li>地区/城市ID：{{ location.id }}</li>
       <li>地区/城市纬度：{{ location.lat }}</li>
       <li>地区/城市经度：{{ location.lon }}</li>
-      <li>地区/城市的上级行政区划名称：{{ location.lon }}</li>
-      <li>地区/城市所属一级行政区域：{{ location.lon }}</li>
+      <li>地区/城市的上级行政区划名称：{{ location.adm2 }}</li>
+      <li>地区/城市所属一级行政区域：{{ location.adm1 }}</li>
       <li>地区/城市所属国家名称{{ location.counter }}</li>
       <li>地区/城市所在时区:{{ location.tz }}</li>
       <li>地区/城市目前与UTC时间偏移的小时数，{{ location.utcOffset }}</li>
@@ -48,40 +46,41 @@
 </template>
 
 <script>
+
 import slotAdm from '@/components/slot/slotAdm'
-import slotRange from '@/components/slot/slotRange'
-import slotNumber from '@/components/slot/slotNumber'
 import slotLang from '@/components/slot/slotLang'
-import {LOCATION_CITY_INFO, LOCATION_CITY_LOCATION, SLOT_ADM} from "@/store/type.mjs";
+import slotLocation from '@/components/slot/slotLocation'
+import slotNumber from '@/components/slot/slotNumber'
+import slotRange from '@/components/slot/slotRange'
+import { LOCATION_CITY_INFO } from "@/store/type.mjs"
+import { computed } from "vue"
+import { useStore } from 'vuex'
 
 export default {
-  name: "CityInfo",
-  methods: {
-    cityLocation(e) {
-      return this.$store.commit({
-        type: LOCATION_CITY_LOCATION,
-        value: e.target.value
-      })
-    },
+  components: { slotLocation, slotAdm, slotRange, slotNumber, slotLang }, // computed: mapState(
+  setup() {
+    const store = useStore ()
 
-    getCityInfo() {
-      return this.$store.dispatch({
-        type: LOCATION_CITY_INFO,
-      })
-    },
+    function getCityInfo() {
+      store.dispatch (
+          {
+            type: LOCATION_CITY_INFO,
+          },
+      )
+    }
 
+    return {
+      getCityInfo,
+      cityInfo: computed (() => store.state.a.cityInfo.data),
+    }
   },
-  components: {
-    slotAdm,
-    slotRange,
-    slotNumber,
-    slotLang
-  }
 }
+
 </script>
 
 <style lang="scss">
 .geolocation-city-info {
+
   background-color: #428675;
 
   .city-cite {
